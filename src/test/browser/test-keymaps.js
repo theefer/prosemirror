@@ -60,6 +60,12 @@ test("Backspace_del_char",
 test("Backspace_del_selection",
      doc(p("h<a>iaaa<b>c")),
      doc(p("hc")))
+test("Backspace_split_list",
+     doc(ul(li(p("hi")), li(p("<a>there")))),
+     doc(ul(li(p("hi"))), p("there")))
+test("Backspace_join_list",
+     doc(ul(li(p("hi"))), p("<a>there")),
+     doc(ul(li(p("hithere")))))
 
 test("Mod-Backspace_join",
      doc(p("hi"), p("<a>there")),
@@ -74,6 +80,12 @@ test("Mod-Backspace_del_selection",
 test("Delete_join",
      doc(p("hi<a>"), p("there")),
      doc(p("hithere")))
+test("Delete_join_list",
+     doc(ul(li(p("hi<a>")), li(p("there")))),
+     doc(ul(li(p("hithere")))))
+test("Delete_join_list_tail",
+     doc(ul(li(p("hi<a>"))), p("there")),
+     doc(ul(li(p("hithere")))))
 test("Delete_del_char",
      doc(p("<a>hi")),
      doc(p("i")))
