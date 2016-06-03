@@ -151,3 +151,10 @@ test("Enter_lift",
 test("Enter_code_newline",
      doc(pre("foo<a>bar")),
      doc(pre("foo\nbar")))
+
+test("Tab_indent_list",
+     doc(ul(li(p("abc")), li(p("<a>def")))),
+     doc(ul(li(p("abc"), ul(li(p("abc")))))))
+test("Shift-Tab_dedent_list",
+     doc(ul(li(p("abc"), ul(li(p("<a>abc")))))),
+     doc(ul(li(p("abc")), li(p("<a>def")))))
